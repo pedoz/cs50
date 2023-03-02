@@ -11,7 +11,7 @@ class Jar:
 
     def deposit(self, n):
         if n + self.size > self.capacity:
-            return ValeuError("quale cusao")
+            return ValueError("quale cusao")
         self.size = int(self.size)
         self.size += n
         return self.size
@@ -59,15 +59,15 @@ def main():
         try:
             question = input("What you want to do now? ")
             if question == "withdraw":
-                total = jar.withdraw(int(input("How many cookies to remove? ")))
-            if question == "deposit":
-                total = jar.deposit(int(input("How many cookies to add? ")))
-            if question == "cookies":
-                total = jar.size()
-            if question == "capacity":
-                print(f"{'🍪' * jar.capacity}")            
-            if question == "exit":
-                print(jar, " Cookies in the Jar")
+                jar.withdraw(int(input("How many cookies to remove? ")))
+            elif question == "deposit":
+                jar.deposit(int(input("How many cookies to add? ")))
+            elif question == "cookies":
+                print(f'{"🍪" * jar.size}')
+            elif question == "capacity":
+                print(f"{'🍪' * jar.capacity}")
+            elif question == "exit":
+                print("Cookies in the Jar:\n", jar, sep = "")
                 sys.exit()
         except TypeError:
             print(jar)
